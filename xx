@@ -1,0 +1,21 @@
+
+
+import xml.etree.ElementTree as ET
+
+adjusted_timing = 1337 #urs
+
+def multiply_numbers_by_adjusted_timing(xml_file):
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+
+    for element in root.iter():
+        if element.text and element.text.isdigit():
+            element.text = str(int(element.text) * (adjusted_timing))
+
+    tree.write("output.xml")
+
+# Usage
+xml_file = "input.xml"
+multiply_numbers_by_100(xml_file)
+
+
